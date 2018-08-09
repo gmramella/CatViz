@@ -1,0 +1,59 @@
+----------
+|collider|->config, globals, morphism, object, utils
+----------
+
+----------
+| config |->
+----------
+
+----------
+| drawing|->d3/jquery
+----------
+
+----------
+| element|->
+----------
+
+----------
+|  focus |->globals, view
+----------
+
+----------
+| globals|->morphism, object, view
+----------
+
+----------
+|keyboard|->config, d3/jquery, drawing, globals, menu, view
+----------
+
+----------
+| locale |->config
+----------
+
+----------
+|  menu  |->config, d3/jquery, globals
+----------
+
+----------
+|morphism|->d3/jquery, globals
+----------
+
+----------
+|  mouse |->collider, config, d3/jquery, drawing, globals, menu, morphism, object, utils, view
+----------
+
+----------
+| object |->globals
+----------
+
+----------
+|  state |->globals, morphism, object, view
+----------
+
+----------
+|  utils |->
+----------
+
+----------
+|  view  |->config, d3/jquery, globals, morphism, object, utils
+----------

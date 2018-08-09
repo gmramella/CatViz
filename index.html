@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="css/disableDefaultDrag.css">
+		<link rel="stylesheet" type="text/css" href="css/menu.css">
+		<link rel="stylesheet" href="css/input.css">
+		<link rel="stylesheet" href="css/tsv.css">
+		<script src="lib/js/d3.v3.js"></script><!--http://d3js.org/d3.v3.js-->
+		<script src="lib/js/jquery-2.1.1.js"></script><!--https://code.jquery.com/jquery-2.1.1.js-->
+		<!--<script src="res/js/"></script>-->
+		<script src="collider.js"></script>
+		<script src="config.js"></script>
+		<script src="drawing.js"></script>
+		<script src="files.js"></script>
+		<script src="focus.js"></script>
+		<script src="globals.js"></script>
+		<script src="keyboard.js"></script>
+		<script src="locale.js"></script>
+		<script src="menu.js"></script>
+		<script src="morphism.js"></script>
+		<script src="mouse.js"></script>
+		<script src="object.js"></script>
+		<script src="state.js"></script>
+		<script src="utils.js"></script>
+		<script src="view.js"></script>
+	</head>
+	<body>
+		<script>
+		view = new View();
+		collider = new Collider();
+		menu = new Menu();
+		drawing = new Drawing();
+		state = new State();
+		files = new Files();
+		
+		if (OPEN_HELP_PAGE_ON_STARTUP) window.open("html/help.html", "_blank").focus();
+		</script>
+	</body>
+</html>

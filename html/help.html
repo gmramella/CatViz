@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Help page</title>
+	</head>
+	<body>
+		<a href="#pt_BR">Português</a>
+		<h2 id="en_US">CatViz Help Page</h2>
+		This page opens up on program's initialization if the variable OPEN_HELP_PAGE_ON_STARTUP is set as true in file config.js<br/>
+		<br/>
+		The canvas starts with a border, lines, these lines' coordinates for orientation and an inner space inside which objects can be create and dragged<br/>
+		Such graphical assistances can be disabled in config.js<br/>
+		<br/>
+		Create object: holding SHIFT key, click on the canvas inside the inner area<br/>
+		Create morphism: holding SHIFT key, click on the source object, hold the mouse down and release it on the target object<br/>
+		Create endomorphism: holding SHIFT key, click on the object and release it on the same object (if a double click occurs in up to 200 milliseconds, the endomorphism's creation is undone)<br/>
+		<br/>
+		Select object: click on the object (while selected, its color is different)<br/>
+		Select morphism: click on the handle of the morphism (while selected, its color and its handler's color are different)<br/>
+		Select endomorphism: click on the handle of the endomorphism<br/>
+		Select multiple elements individually: holding CTRL key, click on each element<br/>
+		Select multiple elements with selection rectangle: click on the canvas, drag the mouse and release<br/>
+		<br/>
+		Drag object: click on the object to select it, hold the mouse down and move it, release it to stop dragging<br/>
+		Drag morphism: click on the morphism's handle to select it, hold the mouse down and move it, release it to stop dragging<br/>
+		Drag endomorphism: click on the endomorphism's handle to select it, hold the mouse down and move it, release it to stop dragging<br/>
+		Drag multiple elements: click on some selected element, hold the mouse down and move it, release it to stop dragging (not implemented yet)<br/>
+		<br/>
+		Select all: CTRL + A<br/>
+		"Deselect" all: CTRL + SHIFT + A<br/>
+		Copy selected elements: CTRL + C<br/>
+		Open file with saved states: CTRL + O (in development)<br/>
+		Create file with saved states: CTRL + P (in development)<br/>
+		Copy current state: CTRL + S<br/>
+		Paste copied elements: CTRL + V<br/>
+		Cut selected: CTRL + X<br/>
+		Redo last action: Ctrl + Y (in development)<br/>
+		Undo last action: Ctrl + Z (in development)<br/>
+		<br/>
+		Delete selected: DEL (in development)<br/>
+		<br/>
+		Open help page: F1<br/>
+		Open developers's page: F2<br/>
+		Open console in case of invisible faults: <a href = "https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers" target = "_blank ">See this link</a><br/>
+		Debugging:<br/>
+		&emsp;Read information about the data structures of objects and morphisms: SPACE<br/>
+		&emsp;Read information about the graphical structures of objects and morphisms: CTRL+SPACE<br/>
+		&emsp;Read keyboard and mouse state machine's state: , (comma)<br/>
+		&emsp;Read selected elements: . (dot)<br/>
+		&emsp;Read state stack: ; (semicolon)<br/>
+		Reporting bugs:<br/>
+		&emsp;Send e-mail to rma@inf.ufrgs.br<br/>
+		&emsp;Subject: CatViz bug found<br/>
+		&emsp;Message body: steps necessary for the bug to manifest itself, separated by commas, followed by colon explaining what is the bug, followed by an optional solution in parentheses<br/>
+		&emsp;Example: create object, create object, create morphism: something bad happens (change line n in file.js)<br/>
+		<br/>
+		Other actions: right click on the canvas, object, morphism or endomorphism and click on the desired action on the menu that opens up<br/>
+		&emsp;&emsp;The possible actions for the canvas are:<br/>
+		&emsp;&emsp;&emsp;&emsp;Create object (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Select all elements<br/>
+		&emsp;&emsp;&emsp;&emsp;Select all objects<br/>
+		&emsp;&emsp;&emsp;&emsp;Select all morphisms<br/>
+		&emsp;&emsp;&emsp;&emsp;Select all endomorphisms<br/>
+		&emsp;&emsp;The possible actions for an object are:<br/>
+		&emsp;&emsp;&emsp;&emsp;Create morphism with the object as source (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Create morphism with the object as target (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Read (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Update (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Delete<br/>
+		&emsp;&emsp;&emsp;&emsp;Select<br/>
+		&emsp;&emsp;The possible actions for a morphism are:<br/>
+		&emsp;&emsp;&emsp;&emsp;Change its type to one of the following: morphism, monomorphism, epimorphism, monoepimorphism, isomorphism (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Read (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Update (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Delete<br/>
+		&emsp;&emsp;&emsp;&emsp;Select<br/>
+		&emsp;&emsp;The possible actions for an endomorphism are:<br/>
+		&emsp;&emsp;&emsp;&emsp;Change its type to one of the following: morphism, monomorphism, epimorphism, monoepimorphism, isomorphism (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Read (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Update (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Delete<br/>
+		&emsp;&emsp;&emsp;&emsp;Select<br/>
+		&emsp;&emsp;The possible actions for a selected object are:<br/>
+		&emsp;&emsp;&emsp;&emsp;Cut<br/>
+		&emsp;&emsp;&emsp;&emsp;Copy<br/>
+		&emsp;&emsp;The possible actions for a selected morphism are:<br/>
+		&emsp;&emsp;&emsp;&emsp;Cut<br/>
+		&emsp;&emsp;&emsp;&emsp;Copy<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicate<br/>
+		&emsp;&emsp;The possible actions for a selected endomorphism are:<br/>
+		&emsp;&emsp;&emsp;&emsp;Cut<br/>
+		&emsp;&emsp;&emsp;&emsp;Copy<br/>
+		&emsp;&emsp;The possible actions for a selected object and a selected morphism are:<br/>
+		&emsp;&emsp;&emsp;&emsp;Cut<br/>
+		&emsp;&emsp;&emsp;&emsp;Copy<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicate object and morphism with same target, if the selected object is the source of selected morphism<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicate object and morphism with same target, if the selected object is the target of selected morphism<br/>
+		These actions can also be chosen by pressing the letters corresponding to them, which are underlined on the menu that opens up.<br/>
+		&emsp;&emsp;For the canvas:<br/>
+		&emsp;&emsp;&emsp;&emsp;Create object: C<br/>
+		&emsp;&emsp;&emsp;&emsp;Select all elements: A<br/>
+		&emsp;&emsp;&emsp;&emsp;Select all objects: O<br/>
+		&emsp;&emsp;&emsp;&emsp;Select all morphisms: M<br/>
+		&emsp;&emsp;&emsp;&emsp;Select all endomorphisms: E<br/>
+		&emsp;&emsp;For an object:<br/>
+		&emsp;&emsp;&emsp;&emsp;Create morphism with the object as origin: T<br/>
+		&emsp;&emsp;&emsp;&emsp;Create morphism with the object as target: F<br/>
+		&emsp;&emsp;&emsp;&emsp;Read: R<br/>
+		&emsp;&emsp;&emsp;&emsp;Update: U<br/>
+		&emsp;&emsp;&emsp;&emsp;Delete: D<br/>
+		&emsp;&emsp;&emsp;&emsp;Select: S<br/>
+		&emsp;&emsp;For a morphism:<br/>
+		&emsp;&emsp;&emsp;&emsp;Change type: C<br/>
+		&emsp;&emsp;&emsp;&emsp;Read: R<br/>
+		&emsp;&emsp;&emsp;&emsp;Update: U<br/>
+		&emsp;&emsp;&emsp;&emsp;Delete: D<br/>
+		&emsp;&emsp;&emsp;&emsp;Select: S<br/>
+		&emsp;&emsp;For an endomorphism:<br/>
+		&emsp;&emsp;&emsp;&emsp;Change type: C<br/>
+		&emsp;&emsp;&emsp;&emsp;Read: R<br/>
+		&emsp;&emsp;&emsp;&emsp;Update: U<br/>
+		&emsp;&emsp;&emsp;&emsp;Delete: D<br/>
+		&emsp;&emsp;&emsp;&emsp;Select: S<br/>
+		&emsp;&emsp;For a selected object:<br/>
+		&emsp;&emsp;&emsp;&emsp;Cut: U (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Copy: O (in development)<br/>
+		&emsp;&emsp;For a selected morphism:<br/>
+		&emsp;&emsp;&emsp;&emsp;Cut: U (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Copy: O (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicate: D (in development)<br/>
+		&emsp;&emsp;For a selected endomorphism:<br/>
+		&emsp;&emsp;&emsp;&emsp;Cut: U (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Copy: O (in development)<br/>
+		&emsp;&emsp;For a selected object and a selected morphism:<br/>
+		&emsp;&emsp;&emsp;&emsp;Cut: U (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Copy: O (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicate object and morphism with same source, if selected object is the source of the selected morphism: S (in development)<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicate object and morphism with same target, if selected object is the target of the selected morphism: T (in development)<br/>
+		<br/>
+		For some of these actions, a second menu with specific fields opens up<br/>
+		Depending on the action, fields can be manipulated in this second menu before their actions are performed<br/>
+		In this second menu, fields can be reset to default if the RESET button is pressed<br/>
+		This second menu performs the actions if its OK button or the ENTER key are pressed<br/>
+		This second menu can be closed without its respective action taking effect if the QUIT button or ESC key are pressed.<br/>
+		The second menu is only executed if all its fields are filled<br/>
+		One can pass through the fields that must be filled using the TAB key<br/>
+		The value of the field <i>type</i> for morphisms can also be chosen with the numbers from 1 to 5<br/>
+		<br/>
+		Change type of next created morphisms: Q (morphism, is the default), W (monomorphism), E (epimorphism), R (monoepimorphism), T (isomorphism)<br/>
+		Draw freely: holding TAB key, click and drag mouse while you want to draw (cursor will change shape while drawing)<br/>
+		Change drawing brush color: 0 to 9 (1 to 6 for rainbow colors and 7 to 0 for 4 monochromatic tones, default is 7)<br/>
+		Increase/decrease drawing brush size: +/- (1 to 72, default is 4)<br/>
+		Erase last drawing: BACKSPACE<br/>
+		Erase all drawings: CTRL + BACKSPACE<br/>
+		<br/>
+		While the canvas is out of focus, a gray rectangle will fill it out, indicating that it is necessary to reposition the focus on it, this can be done simply by clicking on it<br/>
+		The focus is lost when opening the console, clicking and/or interacting with the console, clicking on the browser address and search bars, when an alert is being shown, etc<br/>
+		While ALT + TAB is being held, the focus is lost until the user goes back to the page<br/>
+		Attention: When the focus is lost, the selection rectangle is deleted <b>and the keyboard and mouse state machine's state goes to "idle" or "idle with element(s) selected" </b>(which means it could be used to reset when you notice a command is not working)</br>
+		<br/>
+		The config.js file contains user configurable values ​​(caution is necessary when modifying them)<br/>
+		<br/>
+		The locale.js file allows the localization of the application (currently translated to de_DE, en_US, es_ES, fr_FR, it_IT, pt_BR, set by the LANGUAGE variable in config.js, default is en_US)<br/>
+		Corrections and expansions are accepted<br/>
+		Sending locale corrections:<br/>
+		&emsp;Send e-mail to rma@inf.ufrgs.br<br/>
+		&emsp;Subject: CatViz locale correction<br/>
+		&emsp;Message body: current sentence inside quotes, hyphen, correct sentence inside quotes<br/>
+		&emsp;Example: "This is a wrong sentence." - "This is a correct sentence."<br/>
+		Sending locale expansions:<br/>
+		&emsp;Send e-mail to rma@inf.ufrgs.br<br/>
+		&emsp;Subject: CatViz locale expansion<br/>
+		&emsp;Message body: for each of the sentences in locale.js: constant name as defined in locale.js, equals sign, sentence in new language inside quotes<br/>
+		&emsp;Example: STR_OBJECT = "OBJECT"<br/>
+		Incomplete locale expansions will not be accepted<br/>
+		The help page can also be corrected or expanded<br/>
+		Sending help page corrections:<br/>
+		&emsp;Send e-mail to rma@inf.ufrgs.br<br/>
+		&emsp;Subject: CatViz help page correction<br/>
+		&emsp;Message body: text snippet inside quotes, hyphen, corrected snippet inside quotes<br/>
+		&emsp;Example: "This is a wrong sentence" - "This is a correct sentence"<br/>
+		Sending help page expansions:<br/>
+		&emsp;Send e-mail to rma@inf.ufrgs.br<br/>
+		&emsp;Subject: CatViz help page expansion<br/>
+		&emsp;Message body: copy of the <a href="./example.txt">example.txt file</a> with new language name in English, locale code, language name in native language, translation to "CatViz Help Page" and "Back to the beginning"<br/>
+		&emsp;Example: see the link<br/>
+		Keep a formal language and use equivalent conjugation tenses, such as infinitive in the names of the commands<br/>
+		If necessary, use a text editor that allows for codification change, such as UTF-8 and maintain the HTML tags<br/>
+		Incomplete help page expansions will not be accepted<br/>
+		<br/>
+		Warning for developers: The file utils.js contains methods added to the Array and Math classes, so problems can arise in the future if the language is modified (to mitigate this, before each method there is an if to check if it is overriding an existing one)<br/>
+		<a href="#en_US">Back to the beginning</a>
+		
+		<h2 id="pt_BR">Página de ajuda do CatViz</h2>
+		Esta página abre na inicialização do programa se a variável OPEN_HELP_PAGE_ON_STARTUP estiver configurada como true no arquivo config.js<br/>
+		<br/>
+		O canvas começa com uma borda, linhas, coordenadas destas linhas para orientação a um espaço interno dentro do qual objetos podem ser criados e arrastados<br/>
+		Tais assistências gráficas podem ser desabilitadas em config.js<br/>
+		<br/>
+		Criar objeto: clicar sobre o canvas<br/>
+		Criar morfismo: segurando a tecla SHIFT, clicar sobre o objeto de origem, manter o mouse pressionado e soltá-lo sobre o objeto de destino<br/>
+		Criar endomorfismo: segurando a tecla SHIFT, clicar sobre o objeto e soltá-lo sobre o mesmo objeto (se ocorrer um duplo clique em até 200 milissegundos, a endomorfismo do objeto é desfeita)<br/>
+		<br/>
+		Selecionar objeto: clicar sobre o objeto (enquanto selecionado, sua cor fica diferente)<br/>
+		Selecionar morfismo: clicar sobre a alça do morfismo (enquanto selecionado, sua cor e de sua alça ficam diferentes)<br/>
+		Selecionar endomorfismo: clicar sobre a alça do endomorfismo<br/>
+		Selecionar múltiplos elementos individualmente: segurando a tecla CTRL, clicar sobre cada elemento<br/>
+		Selecionar múltiplos elementos com retângulo de seleção: clicar sobre o canvas, arrastar o mouse e soltar<br/>
+		<br/>
+		Arrastar objeto: clicar no objeto para selecioná-lo, manter o mouse pressionado e movê-lo, soltá-lo para parar de arrastar<br/>
+		Arrastar morfismo: clicar na alça do morfismo para selecioná-la, manter o mouse pressionado e movê-lo, soltá-lo para parar de arrastar<br/>
+		Arrastar endomorfismo: clicar na alça do endomorfismo para selecioná-la, manter o mouse pressionado e movê-lo, soltá-lo para parar de arrastar<br/>
+		Arrastar múltiplos elementos: clicar em algum elemento selecionado, manter o mouse pressionado e movê-lo, soltá-lo para parar de arrastar (ainda não implementado)<br/>
+		<br/>
+		Selecionar tudo: CTRL + A<br/>
+		"Deselecionar" tudo: CTRL + SHIFT + A<br/>
+		Copiar elementos selecionados: CTRL + C<br/>
+		Abrir arquivo com estados salvos: CTRL + O (em desenvolvimento)<br/>
+		Criar arquivo com estados salvos: CTRL + P (em desenvolvimento)<br/>
+		Copiar estado atual: CTRL + S<br/>
+		Colar elementos copiados: CTRL + V<br/>
+		Recortar selecionados: CTRL + X<br/>
+		Refazer última ação: Ctrl + Y (em desenvolvimento)<br/>
+		Desfazer última ação: Ctrl + Z (em desenvolvimento)<br/>
+		<br/>
+		Deletar selecionados: DEL (em desenvolvimento)<br/>
+		<br/>
+		Abrir página de ajuda: F1<br/>
+		Abrir página para desenvolvedores: F2<br/>
+		Abrir console em caso de falhas invisíveis: <a href="https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers" target="_blank">Veja este link</a><br/>
+		Debugando:<br/>
+		&emsp;Ler informações sobre as estruturas de dados dos objetos e morfismos: SPACE<br/>
+		&emsp;Ler informações sobre as estruturas gráficas dos objetos e morfismos: CTRL+SPACE<br/>
+		&emsp;Ler estado da máquina de estados do teclado e mouse: , (vírgula)<br/>
+		&emsp;Ler elementos selecionados: . (ponto)<br/>
+		&emsp;Ler pilha de estados: ; (ponto e vírgula)<br/>
+		Reportando bugs:<br/>
+		&emsp;Mandar e-mail para rma@inf.ufrgs.br<br/>
+		&emsp;Assunto: CatViz bug found<br/>
+		&emsp;Corpo da mensagem: passos necessários para o bug manifestar-se, separados por vírgulas, seguidos se dois-pontos explicando o que é o bug, seguido de uma solução opcional em parênteses<br/>
+		&emsp;Exemplo: criar objeto, criar objeto, criar morfismo: algo ruim acontece (mudar linha n em file.js)<br/>
+		<br/>
+		Outras ações: clicar com o botão direito sobre o canvas, objeto, morfismo ou endomorfismo e clicar na ação desejada no menu que se abre<br/>
+		&emsp;&emsp;As possíveis ações para o canvas são:<br/>
+		&emsp;&emsp;&emsp;&emsp;Criar objeto (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar todos elementos<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar todos objetos<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar todos morfismos<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar todos endomorfismos<br/>
+		&emsp;&emsp;As possíveis ações para um objeto são:<br/>
+		&emsp;&emsp;&emsp;&emsp;Criar morfismo com o objeto como origem (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Criar morfismo com o objeto como destino (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Ler (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Atualizar (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Deletar<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar<br/>
+		&emsp;&emsp;As possíveis ações para um morfismo são:<br/>
+		&emsp;&emsp;&emsp;&emsp;Mudar seu tipo para um dos seguintes: morfismo, monomorfismo, epimorfismo, monoepimorfismo, isomorfismo (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Ler (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Atualizar (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Deletar<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar<br/>
+		&emsp;&emsp;As possíveis ações para um endomorfismo são:<br/>
+		&emsp;&emsp;&emsp;&emsp;Mudar seu tipo para um dos seguintes: morfismo, monomorfismo, epimorfismo, monoepimorfismo, isomorfismo (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Ler (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Atualizar (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Deletar<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar<br/>
+		&emsp;&emsp;As possíveis ações para um objeto selecionado são:<br/>
+		&emsp;&emsp;&emsp;&emsp;Recortar<br/>
+		&emsp;&emsp;&emsp;&emsp;Copiar<br/>
+		&emsp;&emsp;As possíveis ações para um morfismo selecionado são:<br/>
+		&emsp;&emsp;&emsp;&emsp;Recortar<br/>
+		&emsp;&emsp;&emsp;&emsp;Copiar<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicar<br/>
+		&emsp;&emsp;As possíveis ações para um endomorfismo selecionado são:<br/>
+		&emsp;&emsp;&emsp;&emsp;Recortar<br/>
+		&emsp;&emsp;&emsp;&emsp;Copiar<br/>
+		&emsp;&emsp;As possíveis ações para um objeto e um morfismo selecionados são:<br/>
+		&emsp;&emsp;&emsp;&emsp;Recortar<br/>
+		&emsp;&emsp;&emsp;&emsp;Copiar<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicar objeto e morfismo com mesmo objeto de origem, se o objeto selecionado for a origem do morfismo selecionado<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicar objeto e morfismo com mesmo objeto de destino, se o objeto selecionado for o destino do morfismo selecionado<br/>
+		Estas ações também podem ser escolhidas pressionando as letras correspondentes a elas, que são sublinhadas no menu que se abre<br>
+		&emsp;&emsp;Para o canvas:<br/>
+		&emsp;&emsp;&emsp;&emsp;Criar objeto: C<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar todos elementos: A<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar todos objetos: O<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar todos morfismos: M<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar todos endomorfismos: E<br/>
+		&emsp;&emsp;Para um objeto:<br/>
+		&emsp;&emsp;&emsp;&emsp;Criar morfismo com o objeto como origem: T<br/>
+		&emsp;&emsp;&emsp;&emsp;Criar morfismo com o objeto como destino: F<br/>
+		&emsp;&emsp;&emsp;&emsp;Ler: R<br/>
+		&emsp;&emsp;&emsp;&emsp;Atualizar: U<br/>
+		&emsp;&emsp;&emsp;&emsp;Deletar: D<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar: S<br/>
+		&emsp;&emsp;Para um morfismo:<br/>
+		&emsp;&emsp;&emsp;&emsp;Mudar tipo: C<br/>
+		&emsp;&emsp;&emsp;&emsp;Ler: R<br/>
+		&emsp;&emsp;&emsp;&emsp;Atualizar: U<br/>
+		&emsp;&emsp;&emsp;&emsp;Deletar: D<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar: S<br/>
+		&emsp;&emsp;Para um endomorfismo:<br/>
+		&emsp;&emsp;&emsp;&emsp;Mudar tipo: C<br/>
+		&emsp;&emsp;&emsp;&emsp;Ler: R<br/>
+		&emsp;&emsp;&emsp;&emsp;Atualizar: U<br/>
+		&emsp;&emsp;&emsp;&emsp;Deletar: D<br/>
+		&emsp;&emsp;&emsp;&emsp;Selecionar: S<br/>
+		&emsp;&emsp;Para um objeto selecionado:<br/>
+		&emsp;&emsp;&emsp;&emsp;Recortar: U (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Copiar: O (em desenvolvimento)<br/>
+		&emsp;&emsp;Para um morfismo selecionado:<br/>
+		&emsp;&emsp;&emsp;&emsp;Recortar: U (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Copiar: O (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicar: D (em desenvolvimento)<br/>
+		&emsp;&emsp;Para um endomorfismo selecionado:<br/>
+		&emsp;&emsp;&emsp;&emsp;Recortar: U (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Copiar: O (em desenvolvimento)<br/>
+		&emsp;&emsp;Para um objeto e um morfismo selecionados:<br/>
+		&emsp;&emsp;&emsp;&emsp;Recortar: U (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Copiar: O (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicar objeto e morfismo com mesmo objeto de origem, se objeto selecionado for origem do morfismo selecionado: S (em desenvolvimento)<br/>
+		&emsp;&emsp;&emsp;&emsp;Duplicar objeto e morfismo com mesmo objeto de destino, se objeto selecionado for destino do morfismo selecionado: T (em desenvolvimento)<br/>
+		<br/>
+		Para algumas destas ações, um segundo menu com campos específicos se abre<br/>
+		Dependendo da ação, campos podem ser manipulados neste segundo menu antes que suas ações sejam executadas<br/>
+		Neste segundo menu, campos podem voltar ao padrão se o botão RESET for pressionado<br/>
+		Este segundo menu executa as ações se seu botão OK ou a tecla ENTER forem pressionados<br/>
+		Este segundo menu pode ser fechado sem que sua respectiva ação tome efeito se o botão QUIT ou a tecla ESC forem pressionados<br/>
+		O segundo menu só é executado se todos seus campos estiverem preenchidos<br/>
+		Pode-se passar pelos campos que devem ser preenchidos usando a tecla TAB<br/>
+		O valor do campo <i>type</i> para morfismos também pode ser escolhido com os números de 1 a 5<br/>
+		<br/>
+		Trocar tipo dos próximos morfismos criados: Q (morfismo, é o padrão), W (monomorfismo), E (epimorfismo), R (monoepimorfismo), T (isomorfismo)<br/>
+		Desenhar livremente: segurando a tecla TAB, clicar e arrastar mouse enquanto quiser desenhar (o cursor mudará de formato enquanto estiver desenhando)<br/>
+		Trocar cor do pincel de desenho: 0 a 9 (1 a 6 para cores do arco-íris e 7 a 0 para 4 tons monocromáticos, padrão é 7)<br/>
+		Aumentar/diminuir tamanho do pincel de desenho: +/- (1 a 72, padrão é 4)<br/>
+		Apagar último desenho: BACKSPACE<br/>
+		Apagar todos desenhos: CTRL + BACKSPACE<br/>
+		<br/>
+		Enquanto o canvas estiver fora de foco, um retângulo cinza o preencherá, indicando que é necessário repor o foco sobre ele, isto pode ser feito simplesmente clicando nele<br/>
+		O foco é perdido ao abrir o console, ao clicar e/ou interagir com o console, ao clicar nas barras de endereço e pesquisa do navegador, quando um alert está sendo exibido, etc<br/>
+		Enquanto ALT + TAB estiver sendo pressionado, o foco é perdido até o usuário voltar à página<br/>
+		Atenção: Ao perder o foco, o retângulo de seleção é apagado <b>e o estado da máquina de estados do teclado e mouse vai para "idle" ou "idle with element(s) selected" </b>(o que significa que isto pode ser usado para resetar quando você perceber que um comando não está funcionando)</br>
+		<br/>
+		O arquivo config.js contém valores configuráveis pelo usuário (necessário cautela na modificação deles)<br/>
+		<br/>
+		O arquivo locale.js permite a localização da aplicação (atualmente traduzido para de_DE, en_US, es_ES, fr_FR, it_IT, pt_BR, regulado pela variável LANGUAGE em config.js, padrão é en_US)<br/>
+		Correções e expansões são aceitas<br/>
+		Enviando correções de locale:<br/>
+		&emsp;Mandar e-mail para rma@inf.ufrgs.br<br/>
+		&emsp;Assunto: CatViz locale correction<br/>
+		&emsp;Corpo da mensagem: frase atual entre aspas, hífen, frase correta entre aspas<br/>
+		&emsp;Exemplo: "This is a wrong sentence" - "This is a correct sentence"<br/>
+		Enviando expansões de locale:<br/>
+		&emsp;Mandar e-mail para rma@inf.ufrgs.br<br/>
+		&emsp;Assunto: CatViz locale expansion<br/>
+		&emsp;Corpo da mensagem: para cada frase em locale.js: nome da constante como definido em locale.js, sinal de igual, frase na nova língua entre aspas<br/>
+		&emsp;Exemplo: STR_OBJECT = "OBJECT"<br/>
+		Expansões de locale incompletas não serão aceitas<br/>
+		A página de ajuda também pode ser corrigida ou expandida<br/>
+		Enviando correções da página de ajuda:<br/>
+		&emsp;Mandar e-mail para rma@inf.ufrgs.br<br/>
+		&emsp;Assunto: CatViz help page correction<br/>
+		&emsp;Corpo da mensagem: trecho do texto entre aspas, hífen, trecho do texto corrigido entre aspas<br/>
+		&emsp;Exemplo: "This is a wrong sentence" - "This is a correct sentence"<br/>
+		Sending help page expansions:<br/>
+		&emsp;Mandar e-mail para rma@inf.ufrgs.br<br/>
+		&emsp;Assunto: CatViz help page expansion<br/>
+		&emsp;Corpo da mensagem: cópia do <a href="./example.txt">arquivo example.txt</a> com o nome da nova língua em inglês, locale code, nome da língua em idioma nativo, tradução de "CatViz Help Page" e "Back to the beginning"<br/>
+		&emsp;Exemplo: ver o link<br/>
+		Manter uma linguagem formal e usar tempos verbais equivalentes, como infinitivo nos nomes dos comandos<br/>
+		Se necessário, usar um editor de texto que permita mudança de codificação, como UTF-8 e manter as tags de HTML<br/>
+		Expansões de página de ajuda incompletas não serão aceitas<br/>
+		<br/>
+		Aviso para desenvolvedores: o arquivo utils.js contém métodos adicionados às classes Array e Math, de forma que podem surgir problemas no futuro se a linguagem for modificada (para mitigar isto, antes de cada método há um if para verificar se está sobrescrevendo um existente)<br/>
+		<a href="#pt_BR">Voltar ao início</a>
+		<script>
+		</script>
+	</body>
+</html>

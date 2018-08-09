@@ -1,0 +1,59 @@
+#canvasItems, #objectItems, #morphismItems, #multipleItems {
+	list-style: none;
+	margin: 0px;
+	margin-top: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 3px;
+	font-size: 17px;
+	color: #333333; 
+}
+hr {
+	width: 85%; 
+	background-color: #E4E4E4;
+	border-color: #E4E4E4;
+	color: #E4E4E4;
+}
+#canvasMenu, #objectMenu, #morphismMenu, #multipleMenu {
+	display: none;
+	position: fixed;
+	border: 1px solid #B2B2B2;
+	box-shadow: 3px 3px 2px #E9E9E9;
+	border-radius: 4px;
+}
+#canvasMenu {
+	width: 164px;
+	background: #F9F9F9;
+}
+#objectMenu {
+	width: 196px;
+	background: #F08080;
+}
+#morphismMenu {
+	width: 164px;
+	background: #9999FF;
+}
+#multipleMenu {
+	width: 164px;
+	background: #99FF99;
+}
+li { 
+	padding: 3px;
+	padding-left: 10px;
+}
+#canvasItems :hover, #objectItems :hover, #morphismItems :hover , #multipleItems :hover {
+	background: #000000;
+	border-radius: 2px;
+}
+#canvasItems :hover {
+	color: #F9F9F9;
+}
+#objectItems :hover {
+	color: #FF0000;
+}
+#morphismItems :hover {
+	color: #0000FF;
+}
+#multipleItems :hover {
+	color: #00FF00;
+}

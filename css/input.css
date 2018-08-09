@@ -1,0 +1,49 @@
+#objectInput, #morphismInput {
+	display: none;
+	position: fixed;
+	border: 1px solid #B2B2B2;
+	box-shadow: 3px 3px 2px #E9E9E9;
+	border-radius: 4px;
+	background: #F9F9F9;
+}
+
+/*https://stackoverflow.com/questions/9686538/align-labels-in-form-next-to-input*/
+#objectInput label, #morphismInput label {
+    display:inline-block;
+    *display: inline;     /* for IE7*/
+    zoom:1;              /* for IE7*/
+    text-align: left;
+    width: 102px;
+	margin-right: 4px;
+	margin-left: 4px;
+	margin-top: 4px;
+	color: #FFFFFF;
+}
+
+#objectInput input, #morphismInput input {
+    display:inline-block;
+    *display: inline;     /* for IE7*/
+    zoom:1;              /* for IE7*/
+    vertical-align:middle;
+	width: 130px;
+}
+
+#objectInput #ok, #morphismInput #ok {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 4px;
+}
+
+#objectInput #quit, #morphismInput #quit {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 4px;
+}
+
+#objectInput #reset, #morphismInput #reset {
+	margin-top: 4px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	margin-left: 4px;
+	width: 139px;
+}
