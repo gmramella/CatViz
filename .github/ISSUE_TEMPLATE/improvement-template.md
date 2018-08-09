@@ -4,7 +4,7 @@ about: Ideas for upgrades
 
 ---
 
-**Describe the improvement**
+**Improvement description**
 A clear and concise description of something that should be improved.
 
 **Additional context**

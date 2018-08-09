@@ -4,7 +4,7 @@ about: Software beautification
 
 ---
 
-**Describe the refinement**
+**Refinement description**
 A clear and concise description of something that should be refined.
 
 **Additional context**

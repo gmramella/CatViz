@@ -4,7 +4,7 @@ about: Replacement for something that already exists
 
 ---
 
-**Describe the change**
+**Change description**
 A clear and concise description of something that should be changed.
 
 **Additional context**

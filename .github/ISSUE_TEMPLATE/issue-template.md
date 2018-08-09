@@ -4,7 +4,7 @@ about: Something missing that should not be
 
 ---
 
-**Describe the issue**
+**Issue description**
 A clear and concise description of something missing that should already exist.
 
 **Files**

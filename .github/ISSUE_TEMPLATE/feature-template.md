@@ -4,7 +4,7 @@ about: Something totally new to add
 
 ---
 
-**Describe the feature you'd like**
+**Feature description**
 A clear and concise description of what you want to happen.
 
 **Additional context**
