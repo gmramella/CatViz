@@ -17,6 +17,9 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
+**Solutions already tried (optional)**
+A clear and concise description of a failed solution attempt.
+
 **Solution (optional)**
 A clear and concise description of what might be done to fix.
 
