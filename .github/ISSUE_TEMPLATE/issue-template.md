@@ -1,13 +1,13 @@
 ---
 name: Issue template
-about: Something missing that should not be
+about: Something that needs correction
 
 ---
 
 **Issue description**
-A clear and concise description of something missing that should already exist.
+A clear and concise description of what needs correction.
 
-**Files**
+**Files (optional)**
 A clear and concise description of files that need to be modified.
 
 **Additional context**
