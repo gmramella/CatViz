@@ -1,6 +1,6 @@
 ---
 name: Bug template
-about: Something terribly wrong that is happening during execution
+about: Something terribly wrong happening during execution
 
 ---
 
