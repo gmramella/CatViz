@@ -1,5 +1,5 @@
 # CatViz
-A tool for visualization of Category Theory concepts and constructions
+A tool for visualization of Category Theory concepts and constructions.
 
 ## Installing
 
@@ -9,7 +9,9 @@ A tool for visualization of Category Theory concepts and constructions
 
 ## Getting Started
 
-Help Page available in html/help.html or by pressing F1 when running the application
+Help Page available in html/help.html or by pressing F1 when running the application.
+
+[Wiki of the software](https://github.com/gmramella/CatViz/wiki).
 
 ## Please
 
