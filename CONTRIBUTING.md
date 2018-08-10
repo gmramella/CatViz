@@ -8,6 +8,8 @@ Invalid issues are **discarded**.
 
 Users with an intolerable amount of invalid issues are **blocked**.
 
+Users who do not follow the [Code of Conduct](https://github.com/gmramella/CatViz/blob/master/CODE_OF_CONDUCT.md) are **blocked**.
+
 
 ### Kanban functioning rules
 
@@ -38,10 +40,8 @@ After implemented and tested, it is moved to the **Done** column.
 
 ### Discussion rules
 
-The discussion is between the owners.
+The discussion is between the maintainers.
 
-Currently, owners are:
-* @gmramella
-* @rodrigo-machado
+The list of maintainers can be found on the Code of Conduct.
 
 @gmramella is authorized to move bugs to any priority column before discussion.
