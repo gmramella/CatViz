@@ -1,5 +1,5 @@
 # CatViz
-A tool for visualization of Category Theory concepts and constructions.
+an editor for Category Theory Diagrams using Web-based technology
 
 ## Installing
 
