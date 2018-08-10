@@ -11,6 +11,13 @@ Users with an intolerable amount of invalid issues are **blocked**.
 Users who do not follow the [Code of Conduct](https://github.com/gmramella/CatViz/blob/master/CODE_OF_CONDUCT.md) are **blocked**.
 
 
+### Tips for inserting images in issues
+
+Sometimes an image can be easily copied to the issue with CTRL+C/CTRL+X followed by CTRL+V, or equivalent.
+
+If that does not work, you can paste the image onto [snag.gy](https://snag.gy) and reference the link the page provides.
+
+
 ### Kanban functioning rules
 
 After an issue is created, it must be added to one of the Projects' Kanbans to be discussed.
