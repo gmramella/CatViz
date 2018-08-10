@@ -4,7 +4,9 @@ Issues can be created by **any** GitHub user.
 
 Issues are **valid** when are created based on one of the issue templates available.
 
-Invalid issued are **discarded**.
+Invalid issues are **discarded**.
+
+Users with an intolerable amount of invalid issues are **blocked**.
 
 
 ### Kanban functioning rules
