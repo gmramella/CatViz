@@ -352,7 +352,6 @@ function Menu() {
 				$("#morphismInput").show();
 				break;
 			case UPDATE_MORPHISM:
-				// console.log("Update morphism");
 				inputOpen = true;
 				inputCode = UPDATE_MORPHISM;
 				var morphism = listOfMorphismsPressed[0];
@@ -363,6 +362,7 @@ function Menu() {
 				fields[3].value = morphism.getTarget();
 				fields[4].value = morphism.getWidth();
 				fields[5].value = morphism.getType();
+				//if (morphism.getType() == "endomorphism") {fields[5].value = morphism.getType().slice(4);}
 				for (var i = 0; i < 6; i++) {fields[i].disabled = true;}
 				fields[1].disabled = false;
 				fields[2].disabled = false;
@@ -386,8 +386,12 @@ function Menu() {
 					view.hideBezier(morphism);
 					morphism.setVisible(false);
 				} else {
-					view.hideEndomorphism(morphism);
-					morphism.setVisible(false);
+					if (!morphism.getIsIdEndomorphism()) {
+						view.hideEndomorphism(morphism);
+						morphism.setVisible(false);
+					} else {
+						alert(STR_CANNOT_DELETE_ID_ENDOMORPHISM_WITHOUT_DELETING_ITS_OBJECT_ALSO);
+					}
 				}
 				state.createState("deleteMorphism", morphism);
 				keyboardMouseStatus = "idle";
@@ -424,7 +428,8 @@ function Menu() {
 				var morphism = selectedElements[0].element;
 				var source = getObjectById(morphism.getSource());
 				var target = getObjectById(morphism.getTarget());
-				morphismCreate(source, target, morphism.getType());
+				var newMorphism = morphismCreate(source, target, morphism.getType());
+				state.createState("createMorphism", [newMorphism]);
 				keyboardMouseStatus = "idle with element(s) selected";
 				// console.log("idle with element(s) selected");
 				break;
@@ -460,7 +465,8 @@ function Menu() {
 				if (y > view.canvasHeight - LIMIT) y = view.canvasHeight - LIMIT;
 				var source = getObjectById(morphism.getSource());
 				var newObject = objectCreate([x, y]);
-				morphismCreate(source, newObject, morphism.getType());
+				var newMorphism = morphismCreate(source, newObject, morphism.getType());
+				state.createState("createMorphism", [newMorphism]);
 				keyboardMouseStatus = "idle with element(s) selected";
 				// console.log("idle with element(s) selected");
 				break;
@@ -496,7 +502,8 @@ function Menu() {
 				if (y > view.canvasHeight - LIMIT) y = view.canvasHeight - LIMIT;
 				var target = getObjectById(morphism.getTarget());
 				var newObject = objectCreate([x, y]);
-				morphismCreate(newObject, target, morphism.getType());
+				var newMorphism = morphismCreate(newObject, target, morphism.getType());
+				state.createState("createMorphism", [newMorphism]);
 				keyboardMouseStatus = "idle with element(s) selected";
 				// console.log("idle with element(s) selected");
 				break;
@@ -528,6 +535,27 @@ function Menu() {
 				invalidForm = true;
 			} else if (inputs[3].value > view.canvasHeight - LIMIT) {
 				invalidForm = true;
+			}
+			if (!invalidForm) {
+				var collides = false;
+				for (var i = 0; i < objects.length; i++) {
+					if (Number(inputs[0].value) !== objects[i].getId()) {
+						console.log(collider.circlesIntersect(Number(inputs[2].value), Number(inputs[3].value), Number(inputs[4].value), objects[i].getX(), objects[i].getY(), objects[i].getRadius()));
+						if (collider.circlesIntersect(Number(inputs[2].value), Number(inputs[3].value), Number(inputs[4].value), objects[i].getX(), objects[i].getY(), objects[i].getRadius())) {
+							collides = true;
+							break;
+						}
+					}
+				}
+				if (!collides) {
+					for (var i = 0; i < morphisms.length; i++) {
+						if (collider.circlesIntersect(Number(inputs[2].value), Number(inputs[3].value), Number(inputs[4].value), morphisms[i].getHandlePosition()[0], morphisms[i].getHandlePosition()[1], DEFAULT_HANDLE_RADIUS)) {
+							collides = true;
+							break;
+						}
+					}
+				}
+				invalidForm = collides;
 			}
 		} else if ([CREATE_MORPHISM_TO, CREATE_MORPHISM_FROM, CHANGE_TYPE, READ_MORPHISM, UPDATE_MORPHISM].has(inputCode)) {
 			inputs = document.getElementsByClassName("menuMorphismInput");
@@ -597,9 +625,9 @@ function Menu() {
 					if (source !== null && target !== null) {
 						var type = fields[5].value;
 						var ptr = null;
+						var newMorphism = null;
 						if (src !== tgt) {
-							morphismCreate(source, target, type);
-							var newMorphism = morphisms.last();
+							newMorphism = morphismCreate(source, target, type);
 							var position = newMorphism.getHandlePosition();
 							view.changeBezierType(newMorphism);
 							var ptr = view.updateBezier(newMorphism, position);
@@ -608,10 +636,10 @@ function Menu() {
 							newMorphism.setCurvePath(ptr.curve.attr("d"));
 							newMorphism.setHandlePosition([ptr.handle.attr("cx"), ptr.handle.attr("cy")]);
 						} else {
-							var newMorphism = new Morphism(src, tgt, type, false, ptr);
-							morphisms.push(newMorphism);
 							ptr = view.createEndomorphism(source, target.getRadius(), 270);
 							view.createEndomorphismLabel(ptr.handle);
+							newMorphism = new Morphism(src, tgt, type, false, ptr);
+							morphisms.push(newMorphism);
 							source.addEndomorphism(newMorphism);
 						}
 						morphismsCounter++;
@@ -630,9 +658,9 @@ function Menu() {
 					if (source !== null && target !== null) {
 						var type = fields[5].value;
 						var ptr = null;
+						var newMorphism = null;
 						if (src !== tgt) {
-							morphismCreate(source, target, type);
-							var newMorphism = morphisms.last();
+							newMorphism = morphismCreate(source, target, type);
 							var position = newMorphism.getHandlePosition();
 							view.changeBezierType(newMorphism);
 							var ptr = view.updateBezier(newMorphism, position);
@@ -641,7 +669,7 @@ function Menu() {
 							newMorphism.setCurvePath(ptr.curve.attr("d"));
 							newMorphism.setHandlePosition([ptr.handle.attr("cx"), ptr.handle.attr("cy")]);
 						} else {
-							var newMorphism = new Morphism(src, tgt, type, false, ptr);
+							newMorphism = new Morphism(src, tgt, type, false, ptr);
 							morphisms.push(newMorphism);
 							ptr = view.createEndomorphism(source, target.getRadius(), 270);
 							view.createEndomorphismLabel(ptr.handle);

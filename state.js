@@ -140,6 +140,19 @@ function State() {
 				for (var i = 0; i < elements.length; i++) {
 					if (elements[i].type === "object") {
 						description.objects.push(elements[i].element);
+						var object = elements[i].element;
+						var morphisms = object.getMorphisms();
+						var endomorphisms = object.getEndomorphisms();
+						for (var j = 0; j < morphisms.length; j++) {
+							if (!elements.has(morphisms[j])) {
+								description.morphisms.push(morphisms[j]);
+							}
+						}
+						for (var j = 0; j < endomorphisms.length; j++) {
+							if (!elements.has(endomorphisms[j])) {
+								description.endomorphisms.push(endomorphisms[j]);
+							}
+						}
 					} else if (elements[i].type !== "endomorphism") {
 						description.morphisms.push(elements[i].element);
 					} else if (elements[i].type === "endomorphism") {
@@ -151,7 +164,6 @@ function State() {
 				break;
 			case "deleteMorphism":
 				doneActions.push("deleteMorphism");
-				console.log(elements);
 				var morphism = elements;
 				var description = {objects: [], morphisms: [], endomorphisms: []};
 				description.morphisms.push(morphism);
@@ -669,6 +681,7 @@ function State() {
 					objs[i].setVisible(true);
 					view.deselectCircle(objs[i]);
 				}
+				hiddenElements = [];
 				break;
 			case "deleteMorphism":
 				var morph = states[currentStateIndex].morphisms[0];

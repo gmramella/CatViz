@@ -1892,6 +1892,7 @@ function View() {
 		} else {
 			d3.selectAll(".line" + id).attr("stroke", DEFAULT_ID_ENDOMORPHISM_COLOR).attr("stroke-width", DEFAULT_ID_ENDOMORPHISM_WIDTH);
 			d3.select("#curvehandle" + id).attr("r", DEFAULT_ID_HANDLE_RADIUS).attr("fill", DEFAULT_ID_HANDLE_COLOR);
+			//exceptionally in these 2 lines, stroke and fill do not work with .attr
 		}
 	}
 	//----------------

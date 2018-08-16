@@ -703,6 +703,6 @@ function morphismCreate(source, target, type) {
 	newMorphism.setPoints([ptr.p0, ptr.p1, ptr.p2]);
 	newMorphism.setCurvePath(ptr.curve.attr("d"));
 	newMorphism.setHandlePosition([ptr.handle.attr("cx"), ptr.handle.attr("cy")]);
-	state.createState("createMorphism", [newMorphism]);
 	lastCreatedMorphismTimestamp = new Date().getTime();
+	return newMorphism;
 }

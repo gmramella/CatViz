@@ -61,6 +61,7 @@ window.addEventListener("mousedown", function(e) {
 								for (var i = 0; i < objectEndomorphisms.length; i++) {
 									view.selectEndomorphism(objectEndomorphisms[i]);
 									objectEndomorphisms[i].setSelected(true);
+									console.log(objectEndomorphisms[i].getSelected());
 								}
 								// state.createState("moveObject");
 								movingObjectLastPosition = listOfObjectsPressed[0].getPosition();
@@ -87,12 +88,9 @@ window.addEventListener("mousedown", function(e) {
 							deselectAll();
 							keyboardMouseStatus = "endomorphism update";
 							// console.log("endomorphism update");
-							var ptr = view.updateEndomorphism(listOfMorphismsPressed[0], mousedownCoords);
-							view.updateEndomorphismLabel(listOfMorphismsPressed[0], mousedownCoords);
+							mousemoveDeltas.push([listOfMorphismsPressed[0].getHandlePosition()[0] - mousemoveCoords[0], listOfMorphismsPressed[0].getHandlePosition()[1] - mousemoveCoords[1]]);
 							view.selectEndomorphism(listOfMorphismsPressed[0]);
-							listOfMorphismsPressed[0].setHandlePosition([ptr.handle.attr("cx"), ptr.handle.attr("cy")]);
 							listOfMorphismsPressed[0].setSelected(true);
-							// state.createState("updateEndomorphism");
 							movingMorphismLastPosition = listOfMorphismsPressed[0].getHandlePosition();
 						} else if (leftMousedownOnMorphism) {
 							keyboardMouseStatus = "deselect all";
@@ -100,14 +98,9 @@ window.addEventListener("mousedown", function(e) {
 							deselectAll();
 							keyboardMouseStatus = "morphism update";
 							// console.log("morphism update");
-							var ptr = view.updateBezier(listOfMorphismsPressed[0], mousedownCoords);
-							view.updateBezierLabel(listOfMorphismsPressed[0], mousedownCoords);
+							mousemoveDeltas.push([listOfMorphismsPressed[0].getHandlePosition()[0] - mousemoveCoords[0], listOfMorphismsPressed[0].getHandlePosition()[1] - mousemoveCoords[1]]);
 							view.selectBezier(listOfMorphismsPressed[0]);
-							listOfMorphismsPressed[0].setPoints([ptr.p0, ptr.p1, ptr.p2]);
-							listOfMorphismsPressed[0].setCurvePath(ptr.curve.attr("d"));
-							listOfMorphismsPressed[0].setHandlePosition([ptr.handle.attr("cx"), ptr.handle.attr("cy")]);
 							listOfMorphismsPressed[0].setSelected(true);
-							// state.createState("moveMorphism");
 							movingMorphismLastPosition = listOfMorphismsPressed[0].getHandlePosition();
 						}
 						break;
@@ -346,6 +339,8 @@ window.addEventListener("mousemove", function(e) {
 				case "endomorphism update":
 					keyboardMouseStatus = "endomorphism update";
 					// console.log("endomorphism update");
+					mousemoveCoords[0] += mousemoveDeltas[0][0];
+					mousemoveCoords[1] += mousemoveDeltas[0][1];
 					var ptr = view.updateEndomorphism(listOfMorphismsPressed[0], mousemoveCoords);
 					view.updateEndomorphismLabel(listOfMorphismsPressed[0], mousemoveCoords);
 					listOfMorphismsPressed[0].setHandlePosition([ptr.handle.attr("cx"), ptr.handle.attr("cy")]);
@@ -354,16 +349,37 @@ window.addEventListener("mousemove", function(e) {
 				case "morphism update":
 					keyboardMouseStatus = "morphism update";
 					// console.log("morphism update");
-					if (mousemoveCoords[0] < SELECTED_HANDLE_RADIUS) mousemoveCoords[0] = SELECTED_HANDLE_RADIUS;
-					if (mousemoveCoords[1] < SELECTED_HANDLE_RADIUS) mousemoveCoords[1] = SELECTED_HANDLE_RADIUS;
-					if (mousemoveCoords[0] > view.canvasWidth - SELECTED_HANDLE_RADIUS) mousemoveCoords[0] = view.canvasWidth - SELECTED_HANDLE_RADIUS;
-					if (mousemoveCoords[1] > view.canvasHeight - SELECTED_HANDLE_RADIUS) mousemoveCoords[1] = view.canvasHeight - SELECTED_HANDLE_RADIUS;
-					var ptr = view.updateBezier(listOfMorphismsPressed[0], mousemoveCoords);
-					view.updateBezierLabel(listOfMorphismsPressed[0], mousemoveCoords);
-					listOfMorphismsPressed[0].setPoints([ptr.p0, ptr.p1, ptr.p2]);
-					listOfMorphismsPressed[0].setCurvePath(ptr.curve.attr("d"));
-					listOfMorphismsPressed[0].setHandlePosition([ptr.handle.attr("cx"), ptr.handle.attr("cy")]);
-					// state.createState("moveMorphism");
+					var collides = false;
+					if (CHECK_COLLISION_ON_MOUSE_MOVE) {
+						for (var i = 0; i < objects.length; i++) {
+							if (collider.circlesIntersect(mousemoveCoords[0], mousemoveCoords[1], DEFAULT_HANDLE_RADIUS, objects[i].getX(), objects[i].getY(), objects[i].getRadius())) {
+								collides = true;
+								break;
+							}
+						}
+						if (!collides) {
+							for (var i = 0; i < morphisms.length; i++) {
+								if (collider.circlesIntersect(mousemoveCoords[0], mousemoveCoords[1], DEFAULT_HANDLE_RADIUS, morphisms[i].getHandlePosition()[0], morphisms[i].getHandlePosition()[1], DEFAULT_HANDLE_RADIUS)) {
+									collides = true;
+									break;
+								}
+							}
+						}
+					}
+					if (!collides) {
+						mousemoveCoords[0] += mousemoveDeltas[0][0];
+						mousemoveCoords[1] += mousemoveDeltas[0][1];
+						if (mousemoveCoords[0] < SELECTED_HANDLE_RADIUS) mousemoveCoords[0] = SELECTED_HANDLE_RADIUS;
+						if (mousemoveCoords[1] < SELECTED_HANDLE_RADIUS) mousemoveCoords[1] = SELECTED_HANDLE_RADIUS;
+						if (mousemoveCoords[0] > view.canvasWidth - SELECTED_HANDLE_RADIUS) mousemoveCoords[0] = view.canvasWidth - SELECTED_HANDLE_RADIUS;
+						if (mousemoveCoords[1] > view.canvasHeight - SELECTED_HANDLE_RADIUS) mousemoveCoords[1] = view.canvasHeight - SELECTED_HANDLE_RADIUS;
+						var ptr = view.updateBezier(listOfMorphismsPressed[0], mousemoveCoords);
+						view.updateBezierLabel(listOfMorphismsPressed[0], mousemoveCoords);
+						listOfMorphismsPressed[0].setPoints([ptr.p0, ptr.p1, ptr.p2]);
+						listOfMorphismsPressed[0].setCurvePath(ptr.curve.attr("d"));
+						listOfMorphismsPressed[0].setHandlePosition([ptr.handle.attr("cx"), ptr.handle.attr("cy")]);
+						// state.createState("moveMorphism");
+					}
 					break;
 				case "object create start":
 					keyboardMouseStatus = "idle";
@@ -687,8 +703,9 @@ window.addEventListener("mouseup", function(e) {
 								}
 							}
 						} else {
-							var newMorphism = new Morphism(sources[0].getId(), targets[0].getId(), "morphism", false, ptr);
-							morphismCreate(sources[0], targets[0], newMorphism.getType());
+							var newMorphism = new Morphism(sources[0].getId(), targets[0].getId(), currentMorphismType, false, ptr);
+							newMorphism = morphismCreate(sources[0], targets[0], newMorphism.getType());
+							state.createState("createMorphism", [newMorphism]);
 						}
 					}
 					keyboardMouseStatus = "shift";
@@ -711,14 +728,18 @@ window.addEventListener("mouseup", function(e) {
 					// console.log("idle");
 					view.deselectEndomorphism(listOfMorphismsPressed[0]);
 					listOfMorphismsPressed[0].setSelected(false);
-					state.createState("moveMorphism", listOfMorphismsPressed[0]);
+					if (!listOfMorphismsPressed[0].getHandlePosition().equals(movingMorphismLastPosition)) {
+						state.createState("moveMorphism", listOfMorphismsPressed[0]);
+					}
 					break;
 				case "morphism update":
 					keyboardMouseStatus = "idle";
 					// console.log("idle");
 					view.deselectBezier(listOfMorphismsPressed[0]);
 					listOfMorphismsPressed[0].setSelected(false);
-					state.createState("moveMorphism", listOfMorphismsPressed[0]);
+					if (!listOfMorphismsPressed[0].getHandlePosition().equals(movingMorphismLastPosition)) {
+						state.createState("moveMorphism", listOfMorphismsPressed[0]);
+					}
 					break;
 				case "object create start":
 					keyboardMouseStatus = "object create stop";
@@ -742,6 +763,7 @@ window.addEventListener("mouseup", function(e) {
 					for (var i = 0; i < objectEndomorphisms.length; i++) {
 						view.deselectEndomorphism(objectEndomorphisms[i]);
 						objectEndomorphisms[i].setSelected(false);
+						console.log(objectEndomorphisms[i].getSelected());
 					}
 					state.createState("moveObject", listOfObjectsPressed[0]);
 					mousemoveDeltas.pop();

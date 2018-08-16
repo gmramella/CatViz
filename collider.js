@@ -36,6 +36,13 @@ function Collider() {
 	}
 	
 	/*
+	Check if a circle with center (x1, y1) and radius r1 and a circle with center (x2, y2) and radius r2 intersect
+	*/
+	this.circlesIntersect = function(x1, y1, r1, x2, y2, r2) {
+		return (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) <= (r1 + r2) * (r1 + r2);
+	}
+	
+	/*
 	Get a list of all circles inside area
 	*/
 	this.getAllCirclesInsideArea = function(p1, p2) {

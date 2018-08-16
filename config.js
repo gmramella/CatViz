@@ -199,3 +199,7 @@ var OPEN_HELP_PAGE_ON_STARTUP = false;
 //Cut, copy and paste configuration variables
 var PASTE_ANGLE = 315;
 //-------------------------------------------
+
+//Collision configuration variables
+var CHECK_COLLISION_ON_MOUSE_MOVE = false;
+//----------------------------------------------

@@ -140,7 +140,7 @@ Math.degSin = function(deg) {
 /*
 Get real angle between p1 and p2
 returns a value in [0, 360)
-it is necessary because atan returns a value betwwen -90 and 90 degrees
+it is necessary because atan returns a value between -90 and 90 degrees
 */
 if(Math.realAngle) console.warn("Overriding existing Math.realAngle at utils.js");
 Math.realAngle = function(p1, p2) {
