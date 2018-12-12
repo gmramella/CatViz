@@ -193,7 +193,7 @@ var LIMIT = 2 * SELECTED_CIRCLE_RADIUS + SELECTED_HANDLE_RADIUS;
 //----------------------------
 
 //Internal pages opening configuration variables
-var OPEN_HELP_PAGE_ON_STARTUP = false;
+var OPEN_HELP_PAGE_ON_STARTUP = true;
 //----------------------------------------------
 
 //Cut, copy and paste configuration variables
