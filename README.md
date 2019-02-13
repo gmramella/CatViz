@@ -5,7 +5,7 @@ an editor for Category Theory Diagrams using Web-based technology
 
 * Clone or download
 * Extract
-* Open index.html ona browser.
+* Open index.html on a browser.
 
 ## Getting Started
 
